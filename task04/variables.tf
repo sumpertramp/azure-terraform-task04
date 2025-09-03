@@ -174,7 +174,7 @@ variable "vm_os_offer" {
 variable "vm_os_sku" {
   type        = string
   description = "Image SKU (24_04-lts-gen2)"
-  default     = "server" 
+  default     = "server"
 }
 
 variable "vm_os_version" {
