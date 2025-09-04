@@ -90,7 +90,7 @@ resource "azurerm_network_interface" "nic" {
   resource_group_name = azurerm_resource_group.rg.name
 
   ip_configuration {
-    name                          = "ipconfig1"
+    name                          = "${var.nic_name}-ipconfig"
     subnet_id                     = azurerm_subnet.frontend.id
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.pip.id
@@ -114,7 +114,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   size                = var.vm_size
 
   admin_username = var.admin_username
-  admin_password = var.vm_admin_password
+  admin_password = var.vm_password
 
   disable_password_authentication = false
 
@@ -149,7 +149,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
       type        = "ssh"
       host        = azurerm_public_ip.pip.ip_address
       user        = var.admin_username
-      password    = var.vm_admin_password
+      password    = var.vm_password
       port        = var.ssh_port
       script_path = "/tmp/terraform_remote_exec.sh"
       timeout     = "15m"
