@@ -59,7 +59,7 @@ resource "azurerm_network_security_rule" "ssh" {
   access                      = "Allow"
   protocol                    = "Tcp"
   source_port_range           = "*"
-  destination_port_ranges     = [tostring(var.ssh_port)]
+  destination_port_range      = [tostring(var.ssh_port)]
   source_address_prefix       = var.allow_ssh_source
   destination_address_prefix  = "*"
   resource_group_name         = azurerm_resource_group.rg.name
@@ -74,7 +74,7 @@ resource "azurerm_network_security_rule" "http" {
   access                      = "Allow"
   protocol                    = "Tcp"
   source_port_range           = "*"
-  destination_port_ranges     = [tostring(var.http_port)]
+  destination_port_range      = [tostring(var.http_port)]
   source_address_prefix       = var.allow_http_source
   destination_address_prefix  = "*"
   resource_group_name         = azurerm_resource_group.rg.name
