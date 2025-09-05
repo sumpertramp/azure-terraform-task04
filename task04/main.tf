@@ -161,7 +161,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
       "sudo systemctl enable nginx",
       "sudo systemctl restart nginx",
       # Doğrulama için ana sayfaya küçük bir imza ekleyelim (opsiyonel)
-      "echo 'EPAM Task04 - Nginx is running via Terraform 🚀' | sudo tee /var/www/html/index.nginx-debian.html"
+      "echo '<!-- EPAM Task04 ok -->' | sudo tee -a /var/www/html/index.nginx-debian.html >/dev/null"
     ]
   }
 }
