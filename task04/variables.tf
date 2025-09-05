@@ -140,17 +140,17 @@ variable "admin_username" {
 }
 
 # DİKKAT: Şifreyi tfvars'a koymayın; apply sırasında TF_VAR_vm_admin_password ile verin.
-variable "vm_admin_password" {
+variable "vm_password" {
   type        = string
   description = "VM local admin password (Azure Linux password policy ile uyumlu)."
   sensitive   = true
   validation {
     condition = (
-      length(var.vm_admin_password) >= 12 &&
-      can(regex("[A-Z]", var.vm_admin_password)) &&
-      can(regex("[a-z]", var.vm_admin_password)) &&
-      can(regex("[0-9]", var.vm_admin_password)) &&
-      can(regex("[^A-Za-z0-9]", var.vm_admin_password))
+      length(var.vm_password) >= 12 &&
+      can(regex("[A-Z]", var.vm_password)) &&
+      can(regex("[a-z]", var.vm_password)) &&
+      can(regex("[0-9]", var.vm_password)) &&
+      can(regex("[^A-Za-z0-9]", var.vm_password))
     )
     error_message = "Parola en az 12 karakter ve en az 1 büyük harf, 1 küçük harf, 1 rakam ve 1 özel karakter içermelidir."
   }
